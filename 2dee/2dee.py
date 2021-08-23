@@ -27,6 +27,12 @@ if not len(sys.argv) > 1:
     exit(1)
 
 try:
-    file_name = open(sys.argv[1])
+    file= open(sys.argv[1])
 except FileNotFoundError:
     eprint(f"File '{sys.argv[1]}' not found.")
+    exit(2)
+
+if file.readable:
+    code = file.readlines()
+else:
+    code = ""
