@@ -17,6 +17,6 @@ def transpile(x):
 
 
 if sys.argv[1] == "T": # just transpile
-  print(transpile(open(sys.argv[2], encoding="utf-8")))
+  print(transpile(open(sys.argv[2], encoding="utf-8").read()))
 else:
-  exec(transpile(open(sys.argv[1], encoding="utf-8")))
+  exec(transpile(open(sys.argv[1], encoding="utf-8").read()))
