@@ -10,7 +10,7 @@ def transpile(x):
   x = x.replace("and", "________and").replace("or", "________or").replace("not", "________not")
   x = x.replace("∧", " and ").replace("∨", " or ").replace("¬", " not ")
   x = x.replace("in", "________in").replace("∊", " in ")
-  x = re.sub("(\w+ *)←", "\1=")
+  x = re.sub("(\w+ *)←", "\1=", x)
   x = x.replace("←", "return ")
   x = re.sub(r"λ(.*?)\.", r"lambda \1: ", x)
   return x
