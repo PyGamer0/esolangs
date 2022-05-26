@@ -7,7 +7,7 @@
 typedef unsigned char byte;
 typedef unsigned short double_byte;
 
-byte tape[65536];
+byte tape[TAPE_SIZE];
 double_byte index_tape = 32768;
 
 double_byte match_paren(char *x, double_byte i) {
