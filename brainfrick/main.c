@@ -1,16 +1,15 @@
 #include <stdio.h>
 #include <string.h>
 #include <unistd.h>
+#include <stdint.h>
 
 #define TAPE_SIZE 65536
+#define CODE_SIZE 65536
 
-typedef unsigned char byte;
-typedef unsigned short double_byte;
+uint16_t tape[TAPE_SIZE];
+uint32_t index_tape = TAPE_SIZE / 2;
 
-byte tape[TAPE_SIZE];
-double_byte index_tape = 32768;
-
-double_byte match_paren(char *x, double_byte i) {
+uint32_t match_paren(char *x, uint32_t i) {
     int k = 0;
     while (i < strlen(x) - 1) {
         if (x[i] == '[') k++;
@@ -18,9 +17,10 @@ double_byte match_paren(char *x, double_byte i) {
         if (k == 0) return i;
         i++;
     }
+    exit(1);
 }
 
-double_byte match_parenr(char *x, double_byte i) {
+uint32_t match_parenr(char *x, uint32_t i) {
     int k = 0;
     while (i > 0) {
         if (x[i] == ']') k++;
@@ -28,6 +28,7 @@ double_byte match_parenr(char *x, double_byte i) {
         if (k == 0) return i;
         i--;
     }
+    exit(1);
 }
 
 int main(int argc, char **argv) {
@@ -37,7 +38,7 @@ int main(int argc, char **argv) {
         return 1;
     }
 
-    char c;
+    int c;
     char *filename = argv[1];
     FILE *file = fopen(filename, "r");
     while ((c = fgetc(file)) != EOF) text[i++] = c; text[i] = '\0';
