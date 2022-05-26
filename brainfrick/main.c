@@ -2,6 +2,7 @@
 #include <string.h>
 #include <unistd.h>
 #include <stdint.h>
+#include <stdlib.h>
 
 #define TAPE_SIZE 65536
 #define CODE_SIZE 65536
